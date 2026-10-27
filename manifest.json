@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Short Video Blocker",
+  "version": "1.1.0",
+  "description": "Blocks YouTube Shorts and Facebook Reels: direct URLs, in-page links, and feed shelves.",
+  "permissions": ["declarativeNetRequest"],
+  "host_permissions": ["*://*.youtube.com/*", "*://*.facebook.com/*"],
+  "declarative_net_request": {
+    "rule_resources": [
+      { "id": "short_video_rules", "enabled": true, "path": "rules.json" }
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*", "*://*.facebook.com/*"],
+      "js": ["content.js"],
+      "css": ["hide.css"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    { "resources": ["blocked.html"], "matches": ["*://*.youtube.com/*", "*://*.facebook.com/*"] }
+  ]
+}

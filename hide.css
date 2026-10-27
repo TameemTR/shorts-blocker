@@ -1,0 +1,22 @@
+/* ---------- YouTube Shorts ---------- */
+ytd-reel-shelf-renderer,
+ytd-rich-shelf-renderer[is-shorts],
+ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
+ytd-guide-entry-renderer:has(a[title="Shorts"]),
+ytd-mini-guide-entry-renderer[aria-label="Shorts"],
+ytd-video-renderer:has(a[href^="/shorts/"]),
+ytd-grid-video-renderer:has(a[href^="/shorts/"]),
+ytd-rich-item-renderer:has(a[href^="/shorts/"]),
+yt-chip-cloud-chip-renderer:has(a[title="Shorts"]) {
+  display: none !important;
+}
+
+/* ---------- Facebook Reels ---------- */
+/* Facebook uses obfuscated class names, so we target links and their list items.
+   This may need tuning as Facebook changes its markup. */
+li:has(> a[href*="facebook.com/reel"]),
+li:has(> div > a[href^="/reel"]),
+a[href^="/reel"],
+a[href*="facebook.com/reel"] {
+  display: none !important;
+}
